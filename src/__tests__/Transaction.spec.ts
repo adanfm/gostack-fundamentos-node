@@ -79,7 +79,7 @@ describe('Transaction', () => {
     );
   });
 
-  it('should not be able to create outcome transaction with invalid type', async () => {
+  it('should not be able to create transaction with invalid type', async () => {
     const response = await request(app).post('/transactions').send({
       title: 'Bicycle',
       type: 'outcomes',
