@@ -78,4 +78,19 @@ describe('Transaction', () => {
       }),
     );
   });
+
+  it('should not be able to create outcome transaction with invalid type', async () => {
+    const response = await request(app).post('/transactions').send({
+      title: 'Bicycle',
+      type: 'outcomes',
+      value: 3000,
+    });
+
+    expect(response.status).toBe(400);
+    expect(response.body).toMatchObject(
+      expect.objectContaining({
+        error: expect.any(String),
+      }),
+    );
+  });
 });
